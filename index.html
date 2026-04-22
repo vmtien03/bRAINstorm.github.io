@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#162b4e">
+  <meta name="description" content="bRAINstorm math rain game">
+  <title>bRAINstorm</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/mathrain.ico" sizes="any">
+  <link rel="shortcut icon" href="assets/mathrain.ico">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="game-page">
+    <section class="game-shell" id="gameShell" aria-label="bRAINstorm">
+      <canvas
+        id="gameCanvas"
+        width="1000"
+        height="720"
+        tabindex="0"
+        role="application"
+        aria-label="bRAINstorm game canvas"
+      ></canvas>
+      <input
+        class="answer-proxy"
+        id="answerProxy"
+        type="text"
+        inputmode="numeric"
+        autocomplete="off"
+        autocapitalize="off"
+        spellcheck="false"
+        aria-hidden="true"
+        tabindex="-1"
+      >
+    </section>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>
