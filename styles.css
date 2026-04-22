@@ -1,0 +1,169 @@
+:root {
+  color-scheme: dark;
+  --page-bg: #0f2338;
+  --panel-bg: #10283f;
+  --panel-border: #4aa4bf;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, #10233d 0%, #315f84 100%);
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.game-page {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+}
+
+.game-shell {
+  position: relative;
+  width: min(100vw - 32px, 1000px);
+  aspect-ratio: 1000 / 720;
+  max-height: calc(100vh - 32px);
+  border: 1px solid rgba(145, 216, 234, 0.36);
+  border-radius: 10px;
+  background: var(--panel-bg);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.36);
+  overflow: hidden;
+}
+
+#gameCanvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  outline: none;
+  image-rendering: auto;
+  touch-action: none;
+  user-select: none;
+}
+
+.answer-proxy {
+  position: absolute;
+  left: 50%;
+  bottom: 12px;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  border: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.fullscreen-button {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  border: 1px solid rgba(175, 230, 242, 0.72);
+  border-radius: 8px;
+  background: rgba(10, 28, 46, 0.58);
+  cursor: pointer;
+}
+
+.fullscreen-button:hover {
+  background: rgba(22, 74, 102, 0.74);
+}
+
+.fullscreen-button span,
+.fullscreen-button::before,
+.fullscreen-button::after {
+  position: absolute;
+  inset: 9px;
+  border-color: #eaf8fb;
+  pointer-events: none;
+}
+
+.fullscreen-button span::before,
+.fullscreen-button span::after,
+.fullscreen-button::before,
+.fullscreen-button::after {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-color: #eaf8fb;
+}
+
+.fullscreen-button::before {
+  top: 9px;
+  left: 9px;
+  border-top: 2px solid;
+  border-left: 2px solid;
+}
+
+.fullscreen-button::after {
+  top: 9px;
+  right: 9px;
+  border-top: 2px solid;
+  border-right: 2px solid;
+}
+
+.fullscreen-button span::before {
+  left: 0;
+  bottom: 0;
+  border-left: 2px solid;
+  border-bottom: 2px solid;
+}
+
+.fullscreen-button span::after {
+  right: 0;
+  bottom: 0;
+  border-right: 2px solid;
+  border-bottom: 2px solid;
+}
+
+.game-shell:fullscreen {
+  width: 100vw;
+  height: 100vh;
+  max-height: none;
+  border: 0;
+  border-radius: 0;
+  display: grid;
+  place-items: center;
+  background: #10233d;
+}
+
+.game-shell:fullscreen #gameCanvas {
+  width: min(100vw, calc(100vh * 1.3888889));
+  height: min(100vh, calc(100vw * 0.72));
+}
+
+.game-shell:fullscreen .answer-proxy {
+  bottom: max(12px, env(safe-area-inset-bottom));
+}
+
+@media (max-width: 760px) {
+  .game-page {
+    padding: 8px;
+  }
+
+  .game-shell {
+    width: calc(100vw - 16px);
+    max-height: calc(100vh - 16px);
+  }
+
+  .fullscreen-button {
+    width: 34px;
+    height: 34px;
+    top: 8px;
+    right: 8px;
+  }
+}
